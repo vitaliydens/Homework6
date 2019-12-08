@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8769ECB239D0DE200422A63 /* AddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8769ECA239D0DE200422A63 /* AddStudentViewController.swift */; };
+		D8769ECD239D15CF00422A63 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8769ECC239D15CF00422A63 /* EditViewController.swift */; };
+		D8769ECF239D1B6000422A63 /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8769ECE239D1B6000422A63 /* EditNameViewController.swift */; };
 		D8A134072393035700DBCCB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A134062393035700DBCCB2 /* AppDelegate.swift */; };
 		D8A134092393035700DBCCB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A134082393035700DBCCB2 /* SceneDelegate.swift */; };
 		D8A1340B2393035700DBCCB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A1340A2393035700DBCCB2 /* ViewController.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D8769ECA239D0DE200422A63 /* AddStudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentViewController.swift; sourceTree = "<group>"; };
+		D8769ECC239D15CF00422A63 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		D8769ECE239D1B6000422A63 /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
 		D8A134032393035700DBCCB2 /* VitaliyPuhklii6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VitaliyPuhklii6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8A134062393035700DBCCB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8A134082393035700DBCCB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +76,9 @@
 				D8A134062393035700DBCCB2 /* AppDelegate.swift */,
 				D8A134082393035700DBCCB2 /* SceneDelegate.swift */,
 				D8A1340A2393035700DBCCB2 /* ViewController.swift */,
+				D8769ECA239D0DE200422A63 /* AddStudentViewController.swift */,
+				D8769ECC239D15CF00422A63 /* EditViewController.swift */,
+				D8769ECE239D1B6000422A63 /* EditNameViewController.swift */,
 				D8A1340C2393035700DBCCB2 /* Main.storyboard */,
 				D8A1340F2393035A00DBCCB2 /* Assets.xcassets */,
 				D8A134112393035A00DBCCB2 /* LaunchScreen.storyboard */,
@@ -163,7 +172,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8769ECF239D1B6000422A63 /* EditNameViewController.swift in Sources */,
+				D8769ECD239D15CF00422A63 /* EditViewController.swift in Sources */,
 				D8A1340B2393035700DBCCB2 /* ViewController.swift in Sources */,
+				D8769ECB239D0DE200422A63 /* AddStudentViewController.swift in Sources */,
 				D8A134072393035700DBCCB2 /* AppDelegate.swift in Sources */,
 				D8A13421239304A600DBCCB2 /* FreePlayerTableViewCell.swift in Sources */,
 				D8A134092393035700DBCCB2 /* SceneDelegate.swift in Sources */,
