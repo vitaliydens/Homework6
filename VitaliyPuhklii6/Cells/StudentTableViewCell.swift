@@ -10,11 +10,18 @@ import UIKit
 
 class StudentTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var geekHubImgView: UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet private weak var lblName: UILabel!
+    @IBOutlet private weak var geekHubImgView: UIImageView!
+
+    var name: String? = "" {
+        didSet {
+            lblName.text = name
+        }
+    }
+
+    var imageGeek: UIImage? = nil {
+        didSet {
+            geekHubImgView.image = imageGeek
+        }
     }
 }

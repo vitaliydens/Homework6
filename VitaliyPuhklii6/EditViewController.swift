@@ -11,9 +11,9 @@ import UIKit
 class EditViewController: UIViewController {
 
     @IBOutlet private weak var lblName: UILabel!
-    
+
     var name: String?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         lblName.text = name
@@ -23,11 +23,13 @@ class EditViewController: UIViewController {
         rightBtn.image = image
         self.navigationItem.setRightBarButton(rightBtn, animated: true)
     }
-    
-    @objc func clickedEdit() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "EditNameViewController") as! EditNameViewController
-        vc.name = name
-        navigationController?.pushViewController(vc, animated: true)
-    }
 
+    @objc func clickedEdit() {
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: "EditNameViewController")
+            as? EditNameViewController else {
+                return
+        }
+        viewController.name = name
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }

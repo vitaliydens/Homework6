@@ -13,14 +13,19 @@ protocol UpClickedDelegate: AnyObject {
 }
 
 class FreePlayerTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var btnUpClicked: UIButton!
-    
+
+    @IBOutlet private weak var lblName: UILabel!
+    @IBOutlet private weak var btnUpClicked: UIButton!
+
     weak var delegate: UpClickedDelegate?
-    
-    
-    @IBAction func btnUpClicked(_ sender: UIButton) {
+
+    @IBAction private func btnUpClicked(_ sender: UIButton) {
         delegate?.clickedUp(cell: self)
+    }
+
+    var name: String? = "" {
+        didSet {
+            lblName.text = name
+        }
     }
 }

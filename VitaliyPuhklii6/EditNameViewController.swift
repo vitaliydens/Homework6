@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol SaveDelegate: class{
+protocol SaveDelegate: class {
     func saveStudent(newName: String, oldName: String)
 }
 
-
 class EditNameViewController: UIViewController {
-    
-    var name: String!
-    weak var delegate: SaveDelegate?
 
     @IBOutlet private weak var tfName: UITextField!
-    
+
+    var name: String!
+
+    weak var delegate: SaveDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let rootViewController = navigationController?.viewControllers.first as? ViewController {
@@ -29,7 +29,7 @@ class EditNameViewController: UIViewController {
         let rightBtn = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(clickedSave))
         self.navigationItem.setRightBarButton(rightBtn, animated: true)
     }
-    
+
     @objc func clickedSave() {
         delegate?.saveStudent(newName: tfName.text!, oldName: name)
         navigationController?.popToRootViewController(animated: true)

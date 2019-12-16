@@ -9,22 +9,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var tableView: UITableView!
-    
+
+    @IBOutlet private weak var tableView: UITableView!
+
     private var model = StudentsModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "StudentTableViewCell", bundle: nil), forCellReuseIdentifier: "StudentTableViewCell")
-        tableView.register(UINib(nibName: "FreePlayerTableViewCell", bundle: nil), forCellReuseIdentifier: "FreePlayerTableViewCell")
-        
+        tableView.register(UINib(nibName: "StudentTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "StudentTableViewCell")
+        tableView.register(UINib(nibName: "FreePlayerTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "FreePlayerTableViewCell")
     }
-    
-    @IBAction func clickedAddStudent(_ sender: UIBarButtonItem) {
-        let vc = self.storyboard!.instantiateViewController(withIdentifier: "AddStudentViewController") as! AddStudentViewController
-        vc.delegate = self
-        self.present(vc, animated: true, completion: nil)
+
+    @IBAction private func clickedAddStudent(_ sender: UIBarButtonItem) {
+    guard let viewController = self.storyboard!.instantiateViewController(withIdentifier: "AddStudentViewController")
+            as? AddStudentViewController else {
+            return
+        }
+        viewController.delegate = self
+        self.present(viewController, animated: true, completion: nil)
     }
 }
 
@@ -32,7 +36,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return model.sections.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -45,9 +49,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return 0
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: "EditViewController")
+            as? EditViewController else {
+            return
+        }
         var name: String!
         switch indexPath.section {
         case 0:
@@ -59,41 +66,52 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         default:
            return
         }
-        vc.name = name
-        navigationController?.pushViewController(vc, animated: true)
+        viewController.name = name
+        navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "StudentTableViewCell") as! StudentTableViewCell
-            cell.geekHubImgView?.image = #imageLiteral(resourceName: "logo_contrast")
-            cell.lblName.text = model.students[indexPath.row]
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "StudentTableViewCell")
+                as? StudentTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.imageGeek = #imageLiteral(resourceName: "logo_contrast")
+            cell.name = model.students[indexPath.row]
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FreePlayerTableViewCell") as! FreePlayerTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FreePlayerTableViewCell")
+                as? FreePlayerTableViewCell else {
+                return UITableViewCell()
+            }
             cell.delegate = self
-            cell.lblName.text = model.free[indexPath.row]
+            cell.name = model.free[indexPath.row]
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "StudentTableViewCell") as! StudentTableViewCell
-            cell.geekHubImgView.image = #imageLiteral(resourceName: "logo_gray")
-            cell.lblName.text = model.off[indexPath.row]
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "StudentTableViewCell")
+                as? StudentTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.imageGeek = #imageLiteral(resourceName: "logo_gray")
+            cell.name = model.off[indexPath.row]
             return cell
         default:
             return UITableViewCell()
         }
     }
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return model.sections[section]
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             switch indexPath.section {
             case 0:
                 let student = model.students[indexPath.row]
@@ -122,8 +140,6 @@ extension ViewController: UpClickedDelegate {
             tableView.reloadData()
         }
     }
-    
-    
 }
 
 extension ViewController: AddDeleagte {
@@ -151,7 +167,4 @@ extension ViewController: SaveDelegate {
         }
         tableView.reloadData()
     }
-    
-    
 }
-
