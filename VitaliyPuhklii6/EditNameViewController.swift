@@ -5,7 +5,6 @@
 //  Created by Developer on 08.12.2019.
 //  Copyright © 2019 Developer. All rights reserved.
 //
-
 import UIKit
 
 protocol SaveDelegate: class {
